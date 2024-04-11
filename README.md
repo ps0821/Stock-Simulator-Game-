@@ -3,7 +3,7 @@
 
 The Stock Simulator Game is a Java-based application developed by our team for the Hacktrix 24 Hackathon. It offers users an immersive experience in the world of stock trading through a simulated environment where they can practice trading with virtual money. The game is designed to provide both entertainment and educational value, helping users learn about investment strategies and gain practical experience without risking real money.
 
-## <h1><b1>Features</b?</h1>
+## <h1><b1>Features</b></h1>
 
 **Virtual Trading**: Users can practice stock trading risk-free using token money, gaining valuable experience.
 
