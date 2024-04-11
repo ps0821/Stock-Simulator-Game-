@@ -22,8 +22,10 @@ Ensure you have Java installed on your system.
 Open the project in your preferred Java development environment.
 
 Compile and run the Main.java file.
+## <h1><b>Live Data Scraping</b></h1>
 
 **Live Data Scraping**
+
 Our project incorporates live data scraping functionality to fetch real-time stock prices from various sources. This feature enhances the realism of the stock trading experience, allowing users to make decisions based on current market conditions.
 
 **Contributors**
