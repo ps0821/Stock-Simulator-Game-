@@ -7,68 +7,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-// ... (existing imports)
-
-import java.sql.SQLException;
-
-public class StockSimulator {
-    // ... (existing fields and methods)
-
-    private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/StockData";
-    private static final String USER = "root";
-    private static final String PASSWORD = "#12Chennai";
-
-    // Add this static block to load the JDBC driver
-    static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Error loading MySQL JDBC driver");
-        }
-    }
-
-    public static void main(String[] args) {
-        // ... (existing main method code)
-
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                updateStockValuesFromMySQL();
-            }
-        }, 0, 2000);
-    }
-
-    private static void updateStockValuesFromMySQL() {
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
-            for (String stockName : stockData.keySet()) {
-                String query = "SELECT Price FROM StockPrices WHERE StockName = ?";
-                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                    preparedStatement.setString(1, stockName);
-
-                    try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                        if (resultSet.next()) {
-                            double newPrice = resultSet.getDouble("Price");
-                            stockData.put(stockName, newPrice);
-
-                            SwingUtilities.invokeLater(() -> {
-                                priceFields.get(stockName).setText(String.format("%.2f", newPrice));
-                            });
-                        }
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // ... (remaining methods)
-}
-
 
 public class StockSimulator{
     private static Map<String, Double> stockData = new HashMap<>();
